@@ -145,7 +145,7 @@ MONGO_URI=mongodb://localhost:27017/cstech-assignment
 # For MongoDB Atlas, use: mongodb+srv://username:password@cluster.mongodb.net/cstech-assignment
 
 # Security
-JWT_SECRET=your_super_secret_jwt_key_here_change_in_production_minimum_32_characters
+JWT_SECRET=your_super_secret_jwt_key_here
 
 ```
 
@@ -255,8 +255,8 @@ npm run preview  # Preview production build
 1. **Navigate to "Add Agent"** from dashboard or header
 2. **Fill Agent Details:**
    ```
-   Name: John Doe
-   Email: john@example.com
+   Name: Agent 1
+   Email: agent1@example.com
    Mobile: +1234567890 (include country code)
    Password: agent123456
    ```
@@ -717,4 +717,5 @@ This project is licensed under the MIT License.
 ---
 
 **Built with ❤️ for the Machine Test Assignment**
+
 
