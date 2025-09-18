@@ -1,0 +1,211 @@
+/* ===================================================================
+   LOGIN PAGE STYLES
+   Authentication form with centered layout and responsive design
+   ================================================================= */
+
+/* ===================================================================
+   PAGE CONTAINER
+   Full-height centered layout for authentication forms
+   ================================================================= */
+.login-page {
+  /* LAYOUT - Full screen centered */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* VISUAL */
+  background-color: var(--background-light);
+  
+  /* SPACING */
+  padding: var(--spacing-md);
+}
+
+/* ===================================================================
+   FORM CONTAINER
+   Card-style container for the login form
+   ================================================================= */
+.form-container {
+  /* VISUAL */
+  background: var(--background-white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  
+  /* LAYOUT */
+  width: 100%;
+  max-width: 28rem;                   /* 400px max width */
+  
+  /* SPACING */
+  padding: var(--spacing-lg);
+}
+
+/* INCREASE PADDING ON LARGER SCREENS */
+@media (min-width: 48rem) {
+  .form-container {
+    padding: var(--spacing-xl);
+    max-width: 28rem;                 /* Slightly larger on desktop */
+  }
+}
+
+/* ===================================================================
+   FORM TITLE
+   Main heading for the authentication form
+   ================================================================= */
+.form-title {
+  /* TYPOGRAPHY */
+  color: var(--text-primary);
+  font-size: var(--font-size-2xl);    /* 24px */
+  font-weight: 600;
+  text-align: center;
+  line-height: var(--line-height-tight);
+  
+  /* SPACING */
+  margin-bottom: var(--spacing-lg);
+}
+
+/* LARGER TITLE ON DESKTOP */
+@media (min-width: 48rem) {
+  .form-title {
+    font-size: var(--font-size-3xl);  /* 32px */
+    margin-bottom: var(--spacing-xl);
+  }
+}
+
+/* ===================================================================
+   FORM ELEMENTS
+   Input groups and labels specific to auth forms
+   ================================================================= */
+.auth-form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.auth-form-label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+}
+
+.auth-form-input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: var(--background-white);
+}
+
+/* INPUT FOCUS STATE */
+.auth-form-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* INPUT ERROR STATE */
+.auth-form-input.error {
+  border-color: var(--danger-color);
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+/* ===================================================================
+   SUBMIT BUTTON
+   Primary action button for form submission
+   ================================================================= */
+.auth-submit-btn {
+  /* LAYOUT */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  
+  /* STYLING */
+  background-color: var(--primary-color);
+  color: var(--background-white);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  cursor: pointer;
+  
+  /* SPACING */
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  
+  /* INTERACTIONS */
+  transition: all 0.2s ease;
+}
+
+/* HOVER STATE */
+.auth-submit-btn:hover:not(:disabled) {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* DISABLED STATE */
+.auth-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===================================================================
+   FORM LINKS
+   Links for switching between login/register or forgot password
+   ================================================================= */
+.auth-links {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+.auth-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: color 0.2s ease;
+}
+
+.auth-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* ===================================================================
+   ERROR MESSAGE
+   Form-specific error styling
+   ================================================================= */
+.auth-error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid #f5c6cb;
+  font-size: var(--font-size-sm);
+  text-align: center;
+}
+
+/* ===================================================================
+   LOADING STATE
+   Spinner and disabled state during form submission
+   ================================================================= */
+.auth-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.auth-loading-spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}

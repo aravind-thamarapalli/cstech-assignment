@@ -1,0 +1,146 @@
+/* ===================================================================
+   ERROR MESSAGE / ALERT COMPONENT STYLES
+   Reusable alert system for success, error, warning, and info messages
+   ================================================================= */
+
+/* ===================================================================
+   BASE ALERT CONTAINER
+   ================================================================= */
+.alert {
+  /* LAYOUT */
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  position: relative;
+  
+  /* TYPOGRAPHY */
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  
+  /* VISUAL */
+  border: 1px solid transparent;      /* Border will be overridden by variants */
+  
+  /* ANIMATIONS */
+  animation: slideIn 0.3s ease-out;
+}
+
+/* SLIDE IN ANIMATION */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================================================
+   ALERT VARIANTS
+   Different styles for different message types
+   ================================================================= */
+
+/* ERROR ALERT - Red theme for error messages */
+.alert-error {
+  background-color: #f8d7da;          /* Light red background */
+  color: #721c24;                     /* Dark red text */
+  border-color: #f5c6cb;              /* Medium red border */
+}
+
+/* SUCCESS ALERT - Green theme for success messages */
+.alert-success {
+  background-color: #d4edda;          /* Light green background */
+  color: #155724;                     /* Dark green text */
+  border-color: #c3e6cb;              /* Medium green border */
+}
+
+/* WARNING ALERT - Yellow theme for warning messages */
+.alert-warning {
+  background-color: #fff3cd;          /* Light yellow background */
+  color: #856404;                     /* Dark yellow/brown text */
+  border-color: #ffeaa7;              /* Medium yellow border */
+}
+
+/* INFO ALERT - Blue theme for informational messages */
+.alert-info {
+  background-color: #d1ecf1;          /* Light blue background */
+  color: #0c5460;                     /* Dark blue text */
+  border-color: #bee5eb;              /* Medium blue border */
+}
+
+/* ===================================================================
+   ALERT CLOSE BUTTON
+   X button to dismiss alerts
+   ================================================================= */
+.alert-close {
+  /* POSITIONING */
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-md);
+  
+  /* RESET BUTTON STYLES */
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+  /* VISUAL */
+  font-size: var(--font-size-lg);     /* Larger X for easier clicking */
+  color: inherit;                     /* Match alert text color */
+  opacity: 0.7;                       /* Semi-transparent by default */
+  
+  /* INTERACTIONS */
+  transition: opacity 0.15s ease;
+  
+  /* ACCESSIBILITY */
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-xs);
+}
+
+/* HOVER STATE */
+.alert-close:hover {
+  opacity: 1;                         /* Full opacity on hover */
+  background-color: rgba(0, 0, 0, 0.05); /* Subtle background */
+}
+
+/* FOCUS STATE FOR ACCESSIBILITY */
+.alert-close:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+/* ===================================================================
+   ALERT WITH ICON SUPPORT
+   Optional classes for alerts with icons
+   ================================================================= */
+.alert-with-icon {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+}
+
+.alert-icon {
+  flex-shrink: 0;                     /* Don't shrink icon */
+  margin-top: 2px;                    /* Align with first line of text */
+  font-size: var(--font-size-lg);
+}
+
+.alert-content {
+  flex: 1;                            /* Take remaining space */
+}
+
+/* ===================================================================
+   RESPONSIVE ADJUSTMENTS
+   ================================================================= */
+@media (min-width: 48rem) {
+  .alert {
+    padding: var(--spacing-lg);
+    font-size: var(--font-size-base);
+  }
+  
+  .alert-close {
+    top: var(--spacing-md);
+    right: var(--spacing-lg);
+  }
+}

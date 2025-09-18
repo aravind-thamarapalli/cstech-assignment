@@ -1,0 +1,385 @@
+/* ===================================================================
+   VIEW AGENTS PAGE STYLES
+   Agent management interface with grid layout and search
+   Available to all authenticated users, admin actions protected
+   ================================================================= */
+
+/* ===================================================================
+   PAGE LAYOUT
+   ================================================================= */
+.view-agents-page {
+  padding: var(--spacing-xl) var(--spacing-md);
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+/* ===================================================================
+   PAGE TITLE
+   ================================================================= */
+.view-agents-title {
+  color: var(--text-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: calc(var(--spacing-xl) * 1.5);
+  letter-spacing: -0.025em;
+}
+
+/* ===================================================================
+   SEARCH AND FILTER SECTION
+   ================================================================= */
+.agents-search-section {
+  background: var(--background-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  margin-bottom: calc(var(--spacing-xl) * 1.5);
+}
+
+.search-input-container {
+  position: relative;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.agents-search-input {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+  transition: all 0.3s ease;
+  padding-left: 3rem;
+}
+
+.agents-search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: var(--font-size-lg);
+}
+
+/* ===================================================================
+   AGENTS GRID
+   Responsive grid layout for agent cards
+   ================================================================= */
+.agents-grid {
+  display: grid;
+  gap: var(--spacing-xl);
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+}
+
+/* ===================================================================
+   AGENT CARD
+   Individual agent display with hover effects
+   ================================================================= */
+.agent-card {
+  background: var(--background-white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.agent-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Agent card header */
+.agent-card-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2563eb 100%);
+  padding: var(--spacing-lg);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.agent-card-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(30px, -30px);
+}
+
+.agent-name {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: calc(var(--spacing-sm) / 2);
+  position: relative;
+  z-index: 1;
+}
+
+.agent-id {
+  font-size: var(--font-size-sm);
+  opacity: 0.9;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================================================================
+   AGENT CARD BODY
+   ================================================================= */
+.agent-card-body {
+  padding: var(--spacing-lg);
+}
+
+.agent-details {
+  display: grid;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.agent-detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--spacing-sm) / 2) 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.agent-detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.detail-value {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+}
+
+/* ===================================================================
+   AGENT CARD ACTIONS
+   Action buttons (admin only)
+   ================================================================= */
+.agent-card-actions {
+  padding: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  gap: calc(var(--spacing-sm) + 0.25rem);
+  justify-content: flex-end;
+}
+
+/* ===================================================================
+   EMPTY STATE
+   Display when no agents found
+   ================================================================= */
+.agents-empty-state {
+  text-align: center;
+  padding: calc(var(--spacing-xl) * 2) var(--spacing-xl);
+  background: var(--background-white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+}
+
+.empty-state-icon {
+  font-size: calc(var(--font-size-3xl) * 1.5);
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-lg);
+}
+
+.empty-state-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.empty-state-description {
+  color: var(--text-muted);
+  font-size: var(--font-size-base);
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN
+   Mobile-first responsive breakpoints
+   ================================================================= */
+@media (max-width: 768px) {
+  .view-agents-page {
+    padding: var(--spacing-md);
+  }
+  
+  .view-agents-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .agents-search-section {
+    padding: var(--spacing-lg);
+  }
+  
+  .agents-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .agent-card-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .agents-search-input {
+    padding: calc(var(--spacing-sm) + 0.25rem) var(--spacing-md);
+    padding-left: 2.5rem;
+  }
+  
+  .search-icon {
+    left: calc(var(--spacing-sm) + 0.25rem);
+    font-size: var(--font-size-base);
+  }
+  
+  .agent-card-header {
+    padding: var(--spacing-md);
+  }
+  
+  .agent-name {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* ===================================================================
+   AGENT TASKS DROPDOWN
+   Expandable task view for each agent
+   ================================================================= */
+.agent-tasks-dropdown {
+  padding: var(--spacing-lg);
+  background: #f8fafc;
+  border-top: 1px solid var(--border-color);
+}
+
+.tasks-header {
+  margin-bottom: var(--spacing-md);
+}
+
+.tasks-header h4 {
+  color: var(--text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin: 0;
+}
+
+.tasks-list {
+  background: var(--background-white);
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.no-tasks {
+  padding: var(--spacing-lg);
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0;
+}
+
+.tasks-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--border-color);
+}
+
+.task-item {
+  background: var(--background-white);
+  padding: var(--spacing-md);
+  transition: background-color 0.2s ease;
+}
+
+.task-item:hover {
+  background: #f1f5f9;
+}
+
+.task-details {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: calc(var(--spacing-sm) / 2);
+  align-items: flex-start;
+}
+
+.task-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  min-width: 4rem;
+}
+
+.task-content {
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  flex: 1;
+}
+
+.task-meta {
+  display: flex;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.task-date,
+.task-file {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.task-file {
+  font-weight: 500;
+}
+
+/* Button styles for dropdown toggle */
+.btn-sm {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  min-width: auto;
+  border-radius: 0.25rem;
+}
+
+/* Responsive adjustments for tasks dropdown */
+@media (max-width: 768px) {
+  .agent-tasks-dropdown {
+    padding: var(--spacing-md);
+  }
+  
+  .task-details {
+    flex-direction: column;
+    gap: calc(var(--spacing-sm) / 2);
+  }
+  
+  .task-label {
+    min-width: auto;
+  }
+  
+  .task-meta {
+    flex-direction: column;
+    gap: calc(var(--spacing-sm) / 2);
+  }
+}

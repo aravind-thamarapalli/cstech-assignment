@@ -1,0 +1,6 @@
+taskId,task,agent,input,expectedOutput
+T1,Compare cultural and legal aspects of India and Japan,ComparisonAgent,"{""origin"": ""IN"", ""destination"": ""JP""}","{""cultureDiff"": ""India is diverse and family-oriented, Japan is homogeneous and punctual."", ""lawDiff"": ""Both drive left, Japan has stricter drug and smoking laws.""}"
+T2,Add Japan to user u1’s favorites,FavoritesAgent,"{""userId"": ""u1"", ""countryId"": ""JP""}","{""status"": ""success"", ""message"": ""Japan added to favorites for user u1""}"
+T3,Fetch travel history of user u2,HistoryAgent,"{""userId"": ""u2""}","{""visited"": [""JP""]}"
+T4,Ask chatbot: What’s the legal drinking age in France?,ChatbotAgent,"{""query"": ""What’s the legal drinking age in France?""}","{""answer"": ""The legal drinking age in France is 18.""}"
+T5,Get cultural details of India,CountryInfoAgent,"{""countryId"": ""IN""}","{""culture"": ""Diverse traditions, festivals like Diwali & Holi, strong family values.""}"

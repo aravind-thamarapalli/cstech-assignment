@@ -1,0 +1,223 @@
+/* ===================================================================
+   REGISTER PAGE STYLES
+   Registration form with centered layout and responsive design
+   Extends the login page styling with registration-specific elements
+   ================================================================= */
+
+/* ===================================================================
+   PAGE CONTAINER
+   Full-height centered layout for registration form
+   ================================================================= */
+.register-page {
+  /* LAYOUT - Full screen centered */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  /* VISUAL */
+  background-color: var(--background-light);
+  
+  /* SPACING */
+  padding: var(--spacing-md);
+}
+
+/* ===================================================================
+   FORM CONTAINER
+   Card-style container for the registration form
+   ================================================================= */
+.register-form-container {
+  /* VISUAL */
+  background: var(--background-white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  
+  /* LAYOUT */
+  width: 100%;
+  max-width: 28rem;                /* Slightly wider for registration */
+  margin: 0 auto;
+  /* SPACING */
+  padding: var(--spacing-lg);
+}
+
+/* INCREASE PADDING ON LARGER SCREENS */
+@media (min-width: 48rem) {
+  .register-form-container {
+    padding: var(--spacing-xl);
+    max-width: 32rem;                 /* Larger on desktop for more fields */
+  }
+}
+
+/* ===================================================================
+   FORM TITLE
+   Main heading for the registration form
+   ================================================================= */
+.register-title {
+  /* TYPOGRAPHY */
+  color: var(--text-primary);
+  font-size: var(--font-size-2xl);    /* 24px */
+  font-weight: 600;
+  text-align: center;
+  line-height: var(--line-height-tight);
+  
+  /* SPACING */
+  margin-bottom: var(--spacing-lg);
+}
+
+/* LARGER TITLE ON DESKTOP */
+@media (min-width: 48rem) {
+  .register-title {
+    font-size: var(--font-size-3xl);  /* 32px */
+    margin-bottom: var(--spacing-xl);
+  }
+}
+
+/* ===================================================================
+   REGISTRATION SPECIFIC STYLING
+   Success-themed submit button for registration
+   ================================================================= */
+.register-submit-btn {
+  /* LAYOUT */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  
+  /* STYLING - Green theme for registration */
+  background-color: var(--success-color);
+  color: var(--background-white);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  cursor: pointer;
+  
+  /* SPACING */
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  
+  /* INTERACTIONS */
+  transition: all 0.2s ease;
+}
+
+/* HOVER STATE */
+.register-submit-btn:hover:not(:disabled) {
+  background-color: var(--success-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* DISABLED STATE */
+.register-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===================================================================
+   FORM FIELD GROUPS
+   Specific styling for registration form fields
+   ================================================================= */
+.register-form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.register-form-label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+}
+
+.register-form-input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: var(--background-white);
+}
+
+/* INPUT FOCUS STATE */
+.register-form-input:focus {
+  outline: none;
+  border-color: var(--success-color);
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+}
+
+/* INPUT ERROR STATE */
+.register-form-input.error {
+  border-color: var(--danger-color);
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+/* ===================================================================
+   PASSWORD STRENGTH INDICATOR
+   Visual feedback for password requirements
+   ================================================================= */
+.password-strength {
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+.password-requirements {
+  list-style: none;
+  margin-top: var(--spacing-sm);
+}
+
+.password-requirements li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.password-requirements li.met {
+  color: var(--success-color);
+}
+
+.password-requirements li.unmet {
+  color: var(--danger-color);
+}
+
+/* ===================================================================
+   REGISTRATION LINKS
+   Links for switching to login page
+   ================================================================= */
+.register-links {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+.register-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: color 0.2s ease;
+}
+
+.register-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* ===================================================================
+   SUCCESS MESSAGE
+   Confirmation message after successful registration
+   ================================================================= */
+.register-success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid #c3e6cb;
+  font-size: var(--font-size-sm);
+  text-align: center;
+}

@@ -1,0 +1,438 @@
+/* ===================================================================
+   ADD AGENT PAGE STYLES
+   Form for creating new agents with file upload capability
+   Mobile-first responsive design with validation styling
+   ================================================================= */
+
+/* ===================================================================
+   PAGE LAYOUT
+   Main container for the add agent page
+   ================================================================= */
+.add-agent-page {
+  min-height: 100vh;
+  background-color: var(--background-light);
+}
+
+.add-agent {
+  padding: var(--spacing-md) 0;
+}
+
+/* INCREASE PADDING ON LARGER SCREENS */
+@media (min-width: 48rem) {
+  .add-agent {
+    padding: var(--spacing-xl) 0;
+  }
+}
+
+/* ===================================================================
+   FORM LAYOUT
+   Responsive form grid to utilize wide space efficiently
+   ================================================================= */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* TWO-COLUMN LAYOUT ON TABLET AND UP */
+@media (min-width: 48rem) {
+  .form {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+  
+  /* Some fields should span full width */
+  .form-group:nth-child(1),    /* Name */
+  .form-group:nth-child(2),    /* Email */
+  .form-group:last-of-type,    /* Confirm Password */
+  .d-flex                      /* Button container */
+  {
+    flex-basis: 100%;
+  }
+}
+
+/* THREE-COLUMN LAYOUT ON LARGE DESKTOP */
+@media (min-width: 80rem) {
+  .form {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .form-group:nth-child(1),    /* Name - full width */
+  .form-group:nth-child(2),    /* Email - full width */
+  .d-flex                      /* Button container - full width */
+  {
+    grid-column: 1 / -1;
+  }
+  
+  /* Mobile and Password can be in a row of 3 */
+  .form-group:nth-child(3) {   /* Mobile */
+    grid-column: 1;
+  }
+  
+  .form-group:nth-child(4) {   /* Password */
+    grid-column: 2;
+  }
+  
+  .form-group:nth-child(5) {   /* Confirm Password */
+    grid-column: 3;
+  }
+}
+
+/* ===================================================================
+   FORM CONTAINER OVERRIDE
+   Make form container wider for agent creation
+   ================================================================= */
+.form-container {
+  /* VISUAL */
+  background: var(--background-white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  
+  /* LAYOUT - Much wider than default */
+  width: 75%;
+  max-width: 48rem;                   /* 768px max width - much larger */
+  margin: 0 auto;
+  
+  /* SPACING */
+  padding: var(--spacing-lg);
+}
+
+/* INCREASE PADDING AND WIDTH ON LARGER SCREENS */
+@media (min-width: 48rem) {
+  .form-container {
+    padding: var(--spacing-xl);
+    max-width: 56rem;                 /* 896px on desktop - even larger */
+  }
+}
+
+@media (min-width: 64rem) {
+  .form-container {
+    max-width: 64rem;                 /* 1024px on large desktop - maximum width */
+  }
+}
+
+/* ===================================================================
+   PAGE TITLE
+   Main heading for the add agent page
+   ================================================================= */
+.page-title {
+  /* TYPOGRAPHY */
+  color: var(--text-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  text-align: center;
+  line-height: var(--line-height-tight);
+  
+  /* SPACING */
+  margin-bottom: var(--spacing-lg);
+}
+
+/* LARGER TITLE ON DESKTOP */
+@media (min-width: 48rem) {
+  .page-title {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-xl);
+  }
+}
+
+/* ===================================================================
+   FORM CONTAINER
+   Card-style container for the agent form
+   ================================================================= */
+.agent-form-container {
+  /* VISUAL */
+  background: var(--background-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  
+  /* LAYOUT */
+  max-width: 32rem;
+  margin: 0 auto;
+  
+  /* SPACING */
+  padding: var(--spacing-lg);
+}
+
+/* INCREASE PADDING ON LARGER SCREENS */
+@media (min-width: 48rem) {
+  .agent-form-container {
+    padding: var(--spacing-xl);
+    max-width: 36rem;
+  }
+}
+
+/* ===================================================================
+   FORM GRID LAYOUT
+   Responsive grid for form fields
+   ================================================================= */
+.agent-form-grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+/* TWO-COLUMN LAYOUT ON LARGER SCREENS */
+@media (min-width: 48rem) {
+  .agent-form-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+/* FULL-WIDTH FORM GROUP */
+.form-group-full {
+  grid-column: 1 / -1;
+}
+
+/* ===================================================================
+   FORM FIELD STYLING
+   Input groups, labels, and inputs for agent form
+   ================================================================= */
+.agent-form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.agent-form-label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+}
+
+.agent-form-input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: var(--background-white);
+}
+
+/* INPUT FOCUS STATE */
+.agent-form-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* INPUT ERROR STATE */
+.agent-form-input.error {
+  border-color: var(--danger-color);
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+/* INPUT SUCCESS STATE */
+.agent-form-input.success {
+  border-color: var(--success-color);
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+}
+
+/* ===================================================================
+   FILE UPLOAD AREA
+   Drag-and-drop file upload component
+   ================================================================= */
+.file-input-group {
+  /* VISUAL */
+  border: 2px dashed var(--border-color);
+  background-color: var(--background-light);
+  border-radius: var(--border-radius-sm);
+  
+  /* LAYOUT */
+  padding: var(--spacing-lg);
+  text-align: center;
+  
+  /* INTERACTIONS */
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* HOVER STATE */
+.file-input-group:hover {
+  border-color: var(--primary-color);
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+/* DRAG OVER STATE */
+.file-input-group.drag-over {
+  border-color: var(--primary-color);
+  background-color: rgba(52, 152, 219, 0.1);
+  transform: scale(1.02);
+}
+
+/* HIDDEN FILE INPUT */
+.file-input {
+  display: none;
+}
+
+/* FILE INPUT LABEL/BUTTON */
+.file-input-label {
+  /* VISUAL */
+  color: var(--primary-color);
+  font-weight: 500;
+  cursor: pointer;
+  
+  /* INTERACTIONS */
+  transition: color 0.2s ease;
+  text-decoration: underline;
+}
+
+.file-input-label:hover {
+  color: var(--primary-dark);
+}
+
+/* FILE PREVIEW TEXT */
+.file-preview {
+  /* TYPOGRAPHY */
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  
+  /* SPACING */
+  margin-top: var(--spacing-sm);
+}
+
+/* ===================================================================
+   FORM VALIDATION
+   Error and success messages for form fields
+   ================================================================= */
+.field-error {
+  /* TYPOGRAPHY */
+  color: var(--danger-color);
+  font-size: var(--font-size-sm);
+  
+  /* SPACING */
+  margin-top: var(--spacing-xs);
+  
+  /* LAYOUT */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.field-success {
+  /* TYPOGRAPHY */
+  color: var(--success-color);
+  font-size: var(--font-size-sm);
+  
+  /* SPACING */
+  margin-top: var(--spacing-xs);
+  
+  /* LAYOUT */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* ===================================================================
+   FORM ACTIONS
+   Submit and cancel buttons
+   ================================================================= */
+.form-actions {
+  /* LAYOUT */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  
+  /* SPACING */
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+/* HORIZONTAL LAYOUT ON LARGER SCREENS */
+@media (min-width: 48rem) {
+  .form-actions {
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--spacing-lg);
+  }
+}
+
+/* PRIMARY SUBMIT BUTTON */
+.agent-submit-btn {
+  /* LAYOUT */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  
+  /* STYLING */
+  background-color: var(--success-color);
+  color: var(--background-white);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  cursor: pointer;
+  
+  /* SPACING */
+  padding: var(--spacing-md) var(--spacing-xl);
+  
+  /* INTERACTIONS */
+  transition: all 0.2s ease;
+}
+
+/* HOVER STATE */
+.agent-submit-btn:hover:not(:disabled) {
+  background-color: var(--success-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* DISABLED STATE */
+.agent-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* CANCEL BUTTON */
+.agent-cancel-btn {
+  /* LAYOUT */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  
+  /* STYLING */
+  background-color: var(--secondary-color);
+  color: var(--background-white);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  cursor: pointer;
+  
+  /* SPACING */
+  padding: var(--spacing-md) var(--spacing-xl);
+  
+  /* INTERACTIONS */
+  transition: all 0.2s ease;
+}
+
+/* HOVER STATE */
+.agent-cancel-btn:hover:not(:disabled) {
+  background-color: var(--secondary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===================================================================
+   LOADING STATE
+   Form submission loading indicator
+   ================================================================= */
+.agent-form-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.agent-loading-spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}

@@ -1,0 +1,152 @@
+/* ===================================================================
+   PROTECTED ROUTE COMPONENT STYLES
+   Loading states and access denied messages for route protection
+   ================================================================= */
+
+/* ===================================================================
+   LOADING STATE CONTAINER
+   Centered loading spinner with message
+   ================================================================= */
+.protected-route-loading {
+  /* LAYOUT - Full screen centered */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  
+  /* VISUAL */
+  background-color: var(--background-light);
+  padding: var(--spacing-md);
+  
+  /* SPACING */
+  gap: var(--spacing-md);
+}
+
+/* ===================================================================
+   LOADING SPINNER
+   Animated rotating circle
+   ================================================================= */
+.loading-spinner {
+  /* SIZE - Mobile first */
+  width: 2rem;
+  height: 2rem;
+  
+  /* VISUAL */
+  border: 3px solid var(--border-color);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  
+  /* ANIMATION */
+  animation: spin 1s linear infinite;
+}
+
+/* LARGER SPINNER ON DESKTOP */
+@media (min-width: 48rem) {
+  .loading-spinner {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-width: 4px;
+  }
+}
+
+/* SPINNER ROTATION ANIMATION */
+@keyframes spin {
+  from { 
+    transform: rotate(0deg); 
+  }
+  to { 
+    transform: rotate(360deg); 
+  }
+}
+
+/* ===================================================================
+   LOADING TEXT
+   Text message below spinner
+   ================================================================= */
+.loading-text {
+  /* TYPOGRAPHY */
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  
+  /* LAYOUT */
+  margin-top: var(--spacing-sm);
+}
+
+/* LARGER TEXT ON DESKTOP */
+@media (min-width: 48rem) {
+  .loading-text {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ===================================================================
+   ACCESS DENIED CONTAINER
+   Error state when user lacks required permissions
+   ================================================================= */
+.access-denied {
+  /* LAYOUT - Full screen centered */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  
+  /* VISUAL */
+  background-color: var(--background-light);
+  padding: var(--spacing-xl);
+  text-align: center;
+  
+  /* SPACING */
+  gap: var(--spacing-md);
+}
+
+/* ===================================================================
+   ACCESS DENIED CONTENT
+   ================================================================= */
+.access-denied-title {
+  /* TYPOGRAPHY */
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--danger-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+.access-denied-message {
+  /* TYPOGRAPHY */
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  max-width: 30rem;                   /* Limit line length for readability */
+}
+
+.access-denied-details {
+  /* VISUAL */
+  background-color: var(--background-white);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  
+  /* TYPOGRAPHY */
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+/* ===================================================================
+   RESPONSIVE ADJUSTMENTS
+   ================================================================= */
+@media (min-width: 48rem) {
+  .protected-route-loading,
+  .access-denied {
+    padding: var(--spacing-xl);
+  }
+  
+  .access-denied-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .access-denied-message {
+    font-size: var(--font-size-lg);
+  }
+}
